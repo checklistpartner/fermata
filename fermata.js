@@ -57,7 +57,7 @@ fermata._makeNativeURL = function (transport, url) {
 	return fermata._wrapTheWrapper(function () {
 		var args = [].slice.call(arguments),
 			lastArgType = fermata._typeof2(args[args.length-1]),
-			isCo = url.path[url.path.length-1].substr(0,2) == 'co'; //detect co_get, co_put, etc, first otherwise the undefined logic will run because a callback isn't passed using co
+			isCo = url.path[url.path.length-1].substr(0,3) == 'co_'; //detect co_get, co_put, etc, first otherwise the undefined logic will run because a callback isn't passed using co
 		if (lastArgType === 'function' || isCo ) {
 			var callback = isCo || args.pop(),
 				data = args.pop(),
