@@ -171,7 +171,7 @@ fermata._nodeTransport = function (request, callback) {
 				// TODO: follow XHR charset algorithm via https://github.com/bnoordhuis/node-iconv
 				responseData = responseData.toString('utf8');
 			}
-			callback(err || null, {status:res.statusCode, headers:fermata._normalize(res.headers), data:responseData});
+			callback(err || null, {status:res.statusCode, headers:fermata._normalize(res.headers), data:responseData}, req);
 		}
 		res.on('end', finish);
 		// TODO: is this handler correct?
