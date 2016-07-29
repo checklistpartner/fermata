@@ -77,7 +77,7 @@ fermata._makeNativeURL = function (transport, url) {
 };
 
 fermata._wrapTheWrapper = function (impl) {
-	return (Proxy || fermata._nodeProxy) ? (Proxy) ? Proxy.createFunction({
+	return (Proxy || fermata._nodeProxy) ? (Proxy) ? new Proxy(impl, {
 		// fundamental trap stubs - http://wiki.ecmascript.org/doku.php?id=harmony:proxies
 		'getOwnPropertyDescriptor': function (name) {},
 		'getPropertyDescriptor': function (name) {},
@@ -90,7 +90,7 @@ fermata._wrapTheWrapper = function (impl) {
 		'get': function (target, name) {
 			return impl(name);
 		}
-	}, impl) : fermata._nodeProxy.createFunction({
+	}) : fermata._nodeProxy.createFunction({
 		// NOTE: node-proxy has a different set of required handlers than harmony:proxies proposal
 		'getOwnPropertyDescriptor': function (name) {},
 		'enumerate': function () { return []; },
