@@ -106,7 +106,8 @@ fermata._wrapTheWrapper = function (impl) {
 		'put': function () { return impl('put').apply(null, arguments); },
 		'post': function () { return impl('post').apply(null, arguments); },
 		'delete': function () { return impl('delete').apply(null, arguments); },
-		'del': function () { return impl('del').apply(null, arguments); }
+		'del': function () { return impl('del').apply(null, arguments); },
+		'patch': function () { return impl('patch').apply(null, arguments); }
 	});
 };
 
